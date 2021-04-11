@@ -7,19 +7,23 @@ import '../injection.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        state.map(
-            initial: (_) {},
-            authenticated: (_) =>
-                Navigator.pushReplacementNamed(context, '/profile'),
-            unAuthenticated: (_) =>
-                Navigator.pushReplacementNamed(context, '/login'));
-      },
-      child: const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+    return BlocProvider(
+      create: (context) =>
+          getIt<AuthBloc>()..add(AuthEvent.authCheckRequested()),
+      child: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          state.map(
+              initial: (_) {},
+              authenticated: (_) =>
+                  Navigator.pushReplacementNamed(context, '/profile'),
+              unAuthenticated: (_) =>
+                  Navigator.pushReplacementNamed(context, '/login'));
+        },
+        child: const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
           ),
         ),
       ),

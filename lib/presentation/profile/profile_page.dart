@@ -1,7 +1,5 @@
-import 'package:compete/application/auth/auth_bloc.dart';
-import 'package:compete/application/sign_in/sign_in_bloc.dart';
+import 'package:compete/application/sign_out/sign_out_bloc.dart';
 import 'package:compete/domain/auth/i_auth_facade.dart';
-import 'package:compete/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:compete/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,31 +7,73 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        state.maybeMap(
-            unAuthenticated: (_) {
-              Navigator.pushNamed(context, '/login');
-            },
-            orElse: () {});
-      },
-      child: Scaffold(
-        body: Center(
-          child: Container(
-            child: Column(
-              children: [
-                Text(getIt<IAuthFacade>().getSignedInUser().toString()),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const AuthEvent.signedOut());
-                  },
-                  child: Text('Logout'),
-                )
-              ],
-            ),
-          ),
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => getIt<SignOutBloc>(),
+        child: BlocConsumer<SignOutBloc, SignOutState>(
+          listener: (context, state) {
+            state.maybeMap(
+                signedOut: (_) {
+                  Navigator.pushReplacementNamed(context, '/');
+                },
+                orElse: () {});
+          },
+          builder: (context, state) {
+            return state.maybeMap(
+              initial: (_) => Column(
+                children: [
+                  Text(getIt<IAuthFacade>().getSignedInUser().toString()),
+                  ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<SignOutBloc>()
+                          .add(const SignOutEvent.onSignedOnPressed());
+                    },
+                    child: Text('Logout'),
+                  )
+                ],
+              ),
+              orElse: () => Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          },
         ),
       ),
     );
+    // Scaffold(
+    //   body: BlocProvider(
+    //     create: (context) => getIt<SignOutBloc>(),
+    //     child: BlocConsumer<SignOutBloc, SignOutState>(
+    //       listener: (context, state) {
+    //         state.maybeMap(
+    //             signedOut: (_) {
+    //               Navigator.pushReplacementNamed(context, '/');
+    //             },
+    //             orElse: () {});
+    //       },
+    //       builder: (context, state) {
+    //         return state.maybeMap(
+    //           initial: (_) => Column(
+    //             children: [
+    //               Text(getIt<IAuthFacade>().getSignedInUser().toString()),
+    //               ElevatedButton(
+    //                 onPressed: () {
+    //                   context
+    //                       .read<SignOutBloc>()
+    //                       .add(const SignOutEvent.onSignedOnPressed());
+    //                 },
+    //                 child: Text('Logout'),
+    //               )
+    //             ],
+    //           ),
+    //           orElse: () => Center(
+    //             child: CircularProgressIndicator(),
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 }

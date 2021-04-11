@@ -20,29 +20,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt<AuthBloc>()..add(AuthEvent.authCheckRequested()),
-      child: MaterialApp(
-        title: 'Compete',
-        theme: ThemeData(
-          accentColor: Colors.black,
-          textTheme: TextTheme(button: TextStyle(color: Colors.black)),
-          brightness: Brightness.dark,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.orangeAccent.shade100,
-              onPrimary: Colors.black,
-            ),
+    return MaterialApp(
+      title: 'Compete',
+      theme: ThemeData(
+        accentColor: Colors.black,
+        textTheme: TextTheme(button: TextStyle(color: Colors.black)),
+        brightness: Brightness.dark,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.orangeAccent.shade100,
+            onPrimary: Colors.black,
           ),
         ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => SplashPage(),
-          '/login': (context) => LoginPage(),
-          '/profile': (context) => ProfilePage(),
-        },
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SplashPage(),
+        '/login': (context) => LoginPage(),
+        '/profile': (context) => ProfilePage(),
+      },
     );
   }
 }
