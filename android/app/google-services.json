@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "464311500209",
+    "project_id": "majapp-d59fe",
+    "storage_bucket": "majapp-d59fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464311500209:android:43ea4082783384b9c95190",
+        "android_client_info": {
+          "package_name": "com.example.compete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464311500209-kjcu67tlm0jos3mcucic1ul7admti2jf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.compete",
+            "certificate_hash": "ae01fa0e0bd502d32497e9e16b45a5ad7bb3b94a"
+          }
+        },
+        {
+          "client_id": "464311500209-phmnt03rama4qko1s9vbe8o6dh7091g7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvLF8D0VTSTUBj6KPsYGiL1DQg33N7Mns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464311500209-phmnt03rama4qko1s9vbe8o6dh7091g7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
