@@ -566,7 +566,7 @@ class _$SignInStateTearOff {
   _SignInState call(
       {required String emailAddress,
       required String password,
-      required bool authSuccess}) {
+      required bool? authSuccess}) {
     return _SignInState(
       emailAddress: emailAddress,
       password: password,
@@ -582,7 +582,7 @@ const $SignInState = _$SignInStateTearOff();
 mixin _$SignInState {
   String get emailAddress => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  bool get authSuccess => throw _privateConstructorUsedError;
+  bool? get authSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInStateCopyWith<SignInState> get copyWith =>
@@ -594,7 +594,7 @@ abstract class $SignInStateCopyWith<$Res> {
   factory $SignInStateCopyWith(
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res>;
-  $Res call({String emailAddress, String password, bool authSuccess});
+  $Res call({String emailAddress, String password, bool? authSuccess});
 }
 
 /// @nodoc
@@ -623,7 +623,7 @@ class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
       authSuccess: authSuccess == freezed
           ? _value.authSuccess
           : authSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -635,7 +635,7 @@ abstract class _$SignInStateCopyWith<$Res>
           _SignInState value, $Res Function(_SignInState) then) =
       __$SignInStateCopyWithImpl<$Res>;
   @override
-  $Res call({String emailAddress, String password, bool authSuccess});
+  $Res call({String emailAddress, String password, bool? authSuccess});
 }
 
 /// @nodoc
@@ -666,7 +666,7 @@ class __$SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
       authSuccess: authSuccess == freezed
           ? _value.authSuccess
           : authSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -683,7 +683,7 @@ class _$_SignInState implements _SignInState {
   @override
   final String password;
   @override
-  final bool authSuccess;
+  final bool? authSuccess;
 
   @override
   String toString() {
@@ -722,14 +722,14 @@ abstract class _SignInState implements SignInState {
   const factory _SignInState(
       {required String emailAddress,
       required String password,
-      required bool authSuccess}) = _$_SignInState;
+      required bool? authSuccess}) = _$_SignInState;
 
   @override
   String get emailAddress => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
   @override
-  bool get authSuccess => throw _privateConstructorUsedError;
+  bool? get authSuccess => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SignInStateCopyWith<_SignInState> get copyWith =>

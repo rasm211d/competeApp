@@ -9,11 +9,11 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           child: BlocProvider(
             create: (context) => getIt<SignInBloc>(),
-            child: LoginForm(
-            ),
+            child: LoginForm(),
           ),
         ),
       ),

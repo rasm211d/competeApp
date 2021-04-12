@@ -17,11 +17,15 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<String, Unit>> registerWithEmailAndPassword(
-      {required String emailAdddress, required String password}) async {
+  Future<Either<String, Unit>> registerWithEmailAndPassword({
+    required String emailAdddress,
+    required String password,
+  }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
-          email: emailAdddress, password: password);
+        email: emailAdddress,
+        password: password,
+      );
       return right(unit);
     } on PlatformException catch (e) {
       return left(e.code);
@@ -29,19 +33,23 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<String, Unit>> signInWithEmailAndPassword(
-      {required String emailAddress, required String password}) async {
+  Future<Either<String, Unit>> signInWithEmailAndPassword({
+    required String emailAddress,
+    required String password,
+  }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-          email: emailAddress, password: password);
+        email: emailAddress,
+        password: password,
+      );
       return right(unit);
-    } on PlatformException catch (e) {
-      return left(e.code);
+    } on Exception catch (e) {
+      return left(e.toString());
     }
   }
 
   @override
   Future signOut() async {
-    Future.wait([_firebaseAuth.signOut()]);
+    await _firebaseAuth.signOut();
   }
 }

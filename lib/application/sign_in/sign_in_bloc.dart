@@ -50,7 +50,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           (l) => state.copyWith(authSuccess: false),
           (r) => state.copyWith(authSuccess: true),
         );
-
+        yield state.copyWith(authSuccess: null);
       },
       signInWithEmailAndPasswordPressed: (e) async* {
         final either = await _authFacade.signInWithEmailAndPassword(
@@ -59,6 +59,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           (l) => state.copyWith(authSuccess: false),
           (r) => state.copyWith(authSuccess: true),
         );
+        yield state.copyWith(authSuccess: null);
         // yield state.copyWith(shouldValidate: false);
       },
     );
