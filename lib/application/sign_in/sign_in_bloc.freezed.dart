@@ -566,11 +566,13 @@ class _$SignInStateTearOff {
   _SignInState call(
       {required String emailAddress,
       required String password,
-      required bool? authSuccess}) {
+      required bool hasAuthFailure,
+      required bool signInSuccessful}) {
     return _SignInState(
       emailAddress: emailAddress,
       password: password,
-      authSuccess: authSuccess,
+      hasAuthFailure: hasAuthFailure,
+      signInSuccessful: signInSuccessful,
     );
   }
 }
@@ -582,7 +584,8 @@ const $SignInState = _$SignInStateTearOff();
 mixin _$SignInState {
   String get emailAddress => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  bool? get authSuccess => throw _privateConstructorUsedError;
+  bool get hasAuthFailure => throw _privateConstructorUsedError;
+  bool get signInSuccessful => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInStateCopyWith<SignInState> get copyWith =>
@@ -594,7 +597,11 @@ abstract class $SignInStateCopyWith<$Res> {
   factory $SignInStateCopyWith(
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res>;
-  $Res call({String emailAddress, String password, bool? authSuccess});
+  $Res call(
+      {String emailAddress,
+      String password,
+      bool hasAuthFailure,
+      bool signInSuccessful});
 }
 
 /// @nodoc
@@ -609,7 +616,8 @@ class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
   $Res call({
     Object? emailAddress = freezed,
     Object? password = freezed,
-    Object? authSuccess = freezed,
+    Object? hasAuthFailure = freezed,
+    Object? signInSuccessful = freezed,
   }) {
     return _then(_value.copyWith(
       emailAddress: emailAddress == freezed
@@ -620,10 +628,14 @@ class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      authSuccess: authSuccess == freezed
-          ? _value.authSuccess
-          : authSuccess // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      hasAuthFailure: hasAuthFailure == freezed
+          ? _value.hasAuthFailure
+          : hasAuthFailure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      signInSuccessful: signInSuccessful == freezed
+          ? _value.signInSuccessful
+          : signInSuccessful // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -635,7 +647,11 @@ abstract class _$SignInStateCopyWith<$Res>
           _SignInState value, $Res Function(_SignInState) then) =
       __$SignInStateCopyWithImpl<$Res>;
   @override
-  $Res call({String emailAddress, String password, bool? authSuccess});
+  $Res call(
+      {String emailAddress,
+      String password,
+      bool hasAuthFailure,
+      bool signInSuccessful});
 }
 
 /// @nodoc
@@ -652,7 +668,8 @@ class __$SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
   $Res call({
     Object? emailAddress = freezed,
     Object? password = freezed,
-    Object? authSuccess = freezed,
+    Object? hasAuthFailure = freezed,
+    Object? signInSuccessful = freezed,
   }) {
     return _then(_SignInState(
       emailAddress: emailAddress == freezed
@@ -663,10 +680,14 @@ class __$SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      authSuccess: authSuccess == freezed
-          ? _value.authSuccess
-          : authSuccess // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      hasAuthFailure: hasAuthFailure == freezed
+          ? _value.hasAuthFailure
+          : hasAuthFailure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      signInSuccessful: signInSuccessful == freezed
+          ? _value.signInSuccessful
+          : signInSuccessful // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -676,18 +697,21 @@ class _$_SignInState implements _SignInState {
   const _$_SignInState(
       {required this.emailAddress,
       required this.password,
-      required this.authSuccess});
+      required this.hasAuthFailure,
+      required this.signInSuccessful});
 
   @override
   final String emailAddress;
   @override
   final String password;
   @override
-  final bool? authSuccess;
+  final bool hasAuthFailure;
+  @override
+  final bool signInSuccessful;
 
   @override
   String toString() {
-    return 'SignInState(emailAddress: $emailAddress, password: $password, authSuccess: $authSuccess)';
+    return 'SignInState(emailAddress: $emailAddress, password: $password, hasAuthFailure: $hasAuthFailure, signInSuccessful: $signInSuccessful)';
   }
 
   @override
@@ -700,9 +724,12 @@ class _$_SignInState implements _SignInState {
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
-            (identical(other.authSuccess, authSuccess) ||
+            (identical(other.hasAuthFailure, hasAuthFailure) ||
                 const DeepCollectionEquality()
-                    .equals(other.authSuccess, authSuccess)));
+                    .equals(other.hasAuthFailure, hasAuthFailure)) &&
+            (identical(other.signInSuccessful, signInSuccessful) ||
+                const DeepCollectionEquality()
+                    .equals(other.signInSuccessful, signInSuccessful)));
   }
 
   @override
@@ -710,7 +737,8 @@ class _$_SignInState implements _SignInState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(emailAddress) ^
       const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(authSuccess);
+      const DeepCollectionEquality().hash(hasAuthFailure) ^
+      const DeepCollectionEquality().hash(signInSuccessful);
 
   @JsonKey(ignore: true)
   @override
@@ -722,14 +750,17 @@ abstract class _SignInState implements SignInState {
   const factory _SignInState(
       {required String emailAddress,
       required String password,
-      required bool? authSuccess}) = _$_SignInState;
+      required bool hasAuthFailure,
+      required bool signInSuccessful}) = _$_SignInState;
 
   @override
   String get emailAddress => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
   @override
-  bool? get authSuccess => throw _privateConstructorUsedError;
+  bool get hasAuthFailure => throw _privateConstructorUsedError;
+  @override
+  bool get signInSuccessful => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SignInStateCopyWith<_SignInState> get copyWith =>

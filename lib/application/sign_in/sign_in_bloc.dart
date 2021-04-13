@@ -24,11 +24,17 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async* {
     yield* event.map(
       emailChanged: (e) async* {
-        yield state.copyWith(emailAddress: e.emailString);
+        yield state.copyWith(
+          emailAddress: e.emailString,
+          hasAuthFailure: false,
+        );
         print(state.emailAddress);
       },
       passwordChanged: (e) async* {
-        yield state.copyWith(password: e.passwordString);
+        yield state.copyWith(
+          password: e.passwordString,
+          hasAuthFailure: false,
+        );
         print(state.password);
       },
       registerWithEmailAndPasswordPressed: (e) async* {
@@ -45,22 +51,27 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         //   print('Email is poo');
         // }
         final either = await _authFacade.registerWithEmailAndPassword(
-            emailAdddress: state.emailAddress, password: state.password);
-        yield either.fold(
-          (l) => state.copyWith(authSuccess: false),
-          (r) => state.copyWith(authSuccess: true),
+          emailAdddress: state.emailAddress,
+          password: state.password,
         );
-        yield state.copyWith(authSuccess: null);
+        yield either.fold(
+          (_) => state.copyWith(hasAuthFailure: true),
+          (_) => state.copyWith(hasAuthFailure: false),
+        );
       },
       signInWithEmailAndPasswordPressed: (e) async* {
         final either = await _authFacade.signInWithEmailAndPassword(
-            emailAddress: state.emailAddress, password: state.password);
-        yield either.fold(
-          (l) => state.copyWith(authSuccess: false),
-          (r) => state.copyWith(authSuccess: true),
+          emailAddress: state.emailAddress,
+          password: state.password,
         );
-        yield state.copyWith(authSuccess: null);
-        // yield state.copyWith(shouldValidate: false);
+        yield either.fold(
+          (_) => state.copyWith(hasAuthFailure: true),
+          (_) => state.copyWith(
+            hasAuthFailure: false,
+            signInSuccessful: true,
+          ),
+        );
+        ;
       },
     );
   }
