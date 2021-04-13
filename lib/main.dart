@@ -1,12 +1,11 @@
-import 'package:compete/application/auth/auth_bloc.dart';
 import 'package:compete/injection.dart';
 import 'package:compete/presentation/auth/login_page.dart';
+import 'package:compete/presentation/auth/register_page.dart';
+import 'package:compete/presentation/landing_page.dart';
 import 'package:compete/presentation/profile/profile_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
 import 'presentation/splash_page.dart';
 
 void main() async {
@@ -37,7 +36,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashPage(),
         '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
         '/profile': (context) => ProfilePage(),
+        '/landing': (context) => LandingPage(),
       },
     );
   }
