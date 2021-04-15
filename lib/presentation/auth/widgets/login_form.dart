@@ -177,9 +177,6 @@ class CustomTextFormField extends StatelessWidget {
           }
           return null;
         } else if (isPassword) {
-          if (!validatePassword(value.toString())) {
-            return 'Password must be longer than 6 chars';
-          }
           return null;
         }
       },

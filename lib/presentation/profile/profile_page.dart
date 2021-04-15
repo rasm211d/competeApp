@@ -19,21 +19,30 @@ class ProfilePage extends StatelessWidget {
         },
         builder: (context, state) {
           return state.maybeMap(
-            initial: (_) => Column(
-              children: [
-                Text(getIt<IAuthFacade>().getSignedInUser().toString()),
-                ElevatedButton(
-                  onPressed: () {
-                    context
-                        .read<SignOutBloc>()
-                        .add(const SignOutEvent.onSignedOnPressed());
-                  },
-                  child: Text('Logout'),
-                )
-              ],
+            initial: (_) => Container(
+              child: ListView(
+                children: ListTile.divideTiles(
+                  context: context,
+                  tiles: [
+                    ListTile(
+                      title: Text(
+                        'Logout',
+                        style: TextStyle(color: Colors.redAccent.shade100),
+                      ),
+                      onTap: () {
+                        context.read<SignOutBloc>().add(
+                              const SignOutEvent.onSignedOnPressed(),
+                            );
+                      },
+                    ),
+                  ],
+                ).toList(),
+              ),
             ),
             orElse: () => Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
             ),
           );
         },

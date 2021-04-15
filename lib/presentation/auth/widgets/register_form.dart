@@ -1,5 +1,7 @@
+import 'package:compete/application/register/register_bloc.dart';
 import 'package:compete/domain/core/validators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 String _password = '';
 String _password2 = '';
@@ -17,108 +19,115 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return Container(
-      padding: EdgeInsets.all(40),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Text(
-              'COMPETE',
-              style: TextStyle(
-                  color: Colors.orangeAccent.shade100,
-                  fontSize: 40,
-                  letterSpacing: 4),
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            CustomTextFormField(
-              isEmail: true,
-              isPassword: false,
-              isPassword2: false,
-              obscure: false,
-              label: 'Email',
-              onChanged: (value) {
-                print(value);
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextFormField(
-              isPassword2: false,
-              isPassword: true,
-              isEmail: false,
-              obscure: true,
-              label: 'Password',
-              onChanged: (value) {
-                print(value);
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextFormField(
-              isPassword: false,
-              isPassword2: true,
-              isEmail: false,
-              obscure: true,
-              label: 'Re-enter password',
-              onChanged: (value) {
-                print(value);
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'REGISTER',
-                  style: TextStyle(
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  ),
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    print('works');
-                  }
+    return BlocListener<RegisterBloc, RegisterState>(
+      listener: (context, state) {
+        if (state.registerSuccessful) {
+          Navigator.pop(context);
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.all(40),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 80,
+              ),
+              Text(
+                'COMPETE',
+                style: TextStyle(
+                    color: Colors.orangeAccent.shade100,
+                    fontSize: 40,
+                    letterSpacing: 4),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              CustomTextFormField(
+                isEmail: true,
+                isPassword: false,
+                isPassword2: false,
+                obscure: false,
+                label: 'Email',
+                onChanged: (value) {
+                  print(value);
                 },
               ),
-            ),
-            Expanded(
-              child: SizedBox(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Already a user?"),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.orangeAccent.shade100),
-                    ))
-              ],
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextFormField(
+                isPassword2: false,
+                isPassword: true,
+                isEmail: false,
+                obscure: true,
+                label: 'Password',
+                onChanged: (value) {
+                  print(value);
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextFormField(
+                isPassword: false,
+                isPassword2: true,
+                isEmail: false,
+                obscure: true,
+                label: 'Re-enter password',
+                onChanged: (value) {
+                  print(value);
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'REGISTER',
+                    style: TextStyle(
+                      fontSize: 18,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print('works');
+                    }
+                  },
+                ),
+              ),
+              Expanded(
+                child: SizedBox(),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already a user?"),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.orangeAccent.shade100),
+                      ))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
