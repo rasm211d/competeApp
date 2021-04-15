@@ -27,8 +27,8 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: password,
       );
       return right(unit);
-    } on PlatformException catch (e) {
-      return left(e.code);
+    } on Exception catch (e) {
+      return left(e.toString());
     }
   }
 

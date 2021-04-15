@@ -19,6 +19,28 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Stream<RegisterState> mapEventToState(
     RegisterEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    yield* event.map(emailChanged: (e) async* {
+      yield state.copyWith(
+        emailAddress: e.emailString,
+        hasRegisterFailure: false,
+      );
+    }, passwordChanged: (e) async* {
+      yield state.copyWith(
+        password: e.passwordString,
+        hasRegisterFailure: false,
+      );
+    }, registerWithEmailAndPasswordPressed: (e) async* {
+      final either = await _authFacade.registerWithEmailAndPassword(
+        emailAdddress: state.emailAddress,
+        password: state.password,
+      );
+      yield either.fold(
+        (_) => state.copyWith(hasRegisterFailure: true),
+        (_) => state.copyWith(
+          hasRegisterFailure: false,
+          registerSuccessful: true,
+        ),
+      );
+    });
   }
 }

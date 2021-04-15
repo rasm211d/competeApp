@@ -23,6 +23,12 @@ class _RegisterFormState extends State<RegisterForm> {
       listener: (context, state) {
         if (state.registerSuccessful) {
           Navigator.pop(context);
+        } else if (state.hasRegisterFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Email already in use.'),
+            ),
+          );
         }
       },
       child: Container(
@@ -52,7 +58,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 obscure: false,
                 label: 'Email',
                 onChanged: (value) {
-                  print(value);
+                  context.read<RegisterBloc>()
+                    ..add(RegisterEvent.emailChanged(value));
                 },
               ),
               SizedBox(
@@ -65,7 +72,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 obscure: true,
                 label: 'Password',
                 onChanged: (value) {
-                  print(value);
+                  context.read<RegisterBloc>()
+                    ..add(RegisterEvent.passwordChanged(value));
                 },
               ),
               SizedBox(
@@ -104,7 +112,9 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print('works');
+                      context.read<RegisterBloc>()
+                        ..add(RegisterEvent
+                            .registerWithEmailAndPasswordPressed());
                     }
                   },
                 ),
@@ -184,6 +194,7 @@ class CustomTextFormField extends StatelessWidget {
           _password2 = value;
           print('password2: $_password2');
         }
+        onChanged(value);
       },
       validator: (value) {
         if (isEmail) {
