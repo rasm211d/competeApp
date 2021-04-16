@@ -21,122 +21,152 @@ class _RegisterFormState extends State<RegisterForm> {
     final _formKey = GlobalKey<FormState>();
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
-        if (state.registerSuccessful) {
-          Navigator.pop(context);
+        if (state.registerSuccessful && !state.userCreationSuccessful) {
+          context.read<RegisterBloc>()
+            ..add(
+              RegisterEvent.createUser(state.username, state.emailAddress),
+            );
         } else if (state.hasRegisterFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Email already in use.'),
             ),
           );
+        } else if (state.userCreationSuccessful) {
+          Navigator.pushReplacementNamed(context, '/landing');
         }
       },
       child: Container(
-        padding: EdgeInsets.all(40),
+        //padding: EdgeInsets.all(40),
         child: Form(
           key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 80,
-              ),
-              Text(
-                'COMPETE',
-                style: TextStyle(
-                    color: Colors.orangeAccent.shade100,
-                    fontSize: 40,
-                    letterSpacing: 4),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              CustomTextFormField(
-                isEmail: true,
-                isPassword: false,
-                isPassword2: false,
-                obscure: false,
-                label: 'Email',
-                onChanged: (value) {
-                  context.read<RegisterBloc>()
-                    ..add(RegisterEvent.emailChanged(value));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              CustomTextFormField(
-                isPassword2: false,
-                isPassword: true,
-                isEmail: false,
-                obscure: true,
-                label: 'Password',
-                onChanged: (value) {
-                  context.read<RegisterBloc>()
-                    ..add(RegisterEvent.passwordChanged(value));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              CustomTextFormField(
-                isPassword: false,
-                isPassword2: true,
-                isEmail: false,
-                obscure: true,
-                label: 'Re-enter password',
-                onChanged: (value) {
-                  print(value);
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'REGISTER',
-                    style: TextStyle(
-                      fontSize: 18,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      context.read<RegisterBloc>()
-                        ..add(RegisterEvent
-                            .registerWithEmailAndPasswordPressed());
-                    }
-                  },
-                ),
-              ),
-              Expanded(
-                child: SizedBox(),
-              ),
-              Row(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(40),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already a user?"),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                  SizedBox(
+                    height: 80,
+                  ),
+                  Text(
+                    'COMPETE',
+                    style: TextStyle(
+                        color: Colors.orangeAccent.shade100,
+                        fontSize: 40,
+                        letterSpacing: 4),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  CustomTextFormField(
+                    isUsername: true,
+                    isEmail: false,
+                    isPassword: false,
+                    isPassword2: false,
+                    obscure: false,
+                    label: 'Username',
+                    onChanged: (value) {
+                      context.read<RegisterBloc>()
+                        ..add(RegisterEvent.usernameChanged(value));
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextFormField(
+                    isUsername: false,
+                    isEmail: true,
+                    isPassword: false,
+                    isPassword2: false,
+                    obscure: false,
+                    label: 'Email',
+                    onChanged: (value) {
+                      context.read<RegisterBloc>()
+                        ..add(RegisterEvent.emailChanged(value));
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextFormField(
+                    isUsername: false,
+                    isPassword2: false,
+                    isPassword: true,
+                    isEmail: false,
+                    obscure: true,
+                    label: 'Password',
+                    onChanged: (value) {
+                      context.read<RegisterBloc>()
+                        ..add(RegisterEvent.passwordChanged(value));
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextFormField(
+                    isUsername: false,
+                    isPassword: false,
+                    isPassword2: true,
+                    isEmail: false,
+                    obscure: true,
+                    label: 'Re-enter password',
+                    onChanged: (value) {
+                      print(value);
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                        ),
+                      ),
                       child: Text(
-                        'Login',
-                        style: TextStyle(color: Colors.orangeAccent.shade100),
-                      ))
+                        'REGISTER',
+                        style: TextStyle(
+                          fontSize: 18,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          context.read<RegisterBloc>()
+                            ..add(RegisterEvent
+                                .registerWithEmailAndPasswordPressed());
+                        }
+                      },
+                    ),
+                  ),
+                  // Expanded(
+                  //   child: SizedBox(),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Already a user?"),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Login',
+                            style:
+                                TextStyle(color: Colors.orangeAccent.shade100),
+                          ))
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
@@ -148,6 +178,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String) onChanged;
   final String label;
   final bool obscure;
+  final bool isUsername;
   final bool isEmail;
   final bool isPassword;
   final bool isPassword2;
@@ -157,6 +188,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.onChanged,
     required this.label,
     required this.obscure,
+    required this.isUsername,
     required this.isEmail,
     required this.isPassword,
     required this.isPassword2,
@@ -204,7 +236,7 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         } else if (isPassword) {
           if (!validatePassword(value.toString())) {
-            return 'Password must be longer than 6 chars';
+            return 'Password must be longer than 6 characters';
           }
           return null;
         } else if (isPassword2) {
@@ -212,6 +244,10 @@ class CustomTextFormField extends StatelessWidget {
             return 'Passwords doesnt match';
           }
           return null;
+        } else if (isUsername) {
+          if (value.toString().length <= 6) {
+            return 'Username must be longer than 6 characters';
+          }
         }
       },
     );

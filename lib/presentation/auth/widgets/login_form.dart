@@ -31,95 +31,102 @@ class _LoginFormState extends State<LoginForm> {
         }
       },
       child: Container(
-        padding: EdgeInsets.all(40),
         child: Form(
           key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 80,
-              ),
-              Text(
-                'COMPETE',
-                style: TextStyle(
-                    color: Colors.orangeAccent.shade100,
-                    fontSize: 40,
-                    letterSpacing: 4),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              CustomTextFormField(
-                isEmail: true,
-                isPassword: false,
-                obscure: false,
-                label: 'Email',
-                onChanged: (value) {
-                  context.read<SignInBloc>()
-                    ..add(SignInEvent.emailChanged(value));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              CustomTextFormField(
-                isPassword: true,
-                isEmail: false,
-                obscure: true,
-                label: 'Password',
-                onChanged: (value) {
-                  context.read<SignInBloc>()
-                    ..add(SignInEvent.passwordChanged(value));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      fontSize: 18,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      context.read<SignInBloc>()
-                        ..add(SignInEvent.signInWithEmailAndPasswordPressed());
-                    }
-                  },
-                ),
-              ),
-              Expanded(
-                child: SizedBox(),
-              ),
-              Row(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(40),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have a user?"),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
+                  SizedBox(
+                    height: 150,
+                  ),
+                  Text(
+                    'COMPETE',
+                    style: TextStyle(
+                        color: Colors.orangeAccent.shade100,
+                        fontSize: 40,
+                        letterSpacing: 4),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  CustomTextFormField(
+                    isEmail: true,
+                    isPassword: false,
+                    obscure: false,
+                    label: 'Email',
+                    onChanged: (value) {
+                      context.read<SignInBloc>()
+                        ..add(SignInEvent.emailChanged(value));
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextFormField(
+                    isPassword: true,
+                    isEmail: false,
+                    obscure: true,
+                    label: 'Password',
+                    onChanged: (value) {
+                      context.read<SignInBloc>()
+                        ..add(SignInEvent.passwordChanged(value));
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                        ),
+                      ),
                       child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.orangeAccent.shade100),
-                      ))
+                        'LOGIN',
+                        style: TextStyle(
+                          fontSize: 18,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          context.read<SignInBloc>()
+                            ..add(SignInEvent
+                                .signInWithEmailAndPasswordPressed());
+                        }
+                      },
+                    ),
+                  ),
+                  // Expanded(
+                  //   child: SizedBox(),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Don't have a user?"),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
+                          child: Text(
+                            'Register',
+                            style:
+                                TextStyle(color: Colors.orangeAccent.shade100),
+                          ))
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
