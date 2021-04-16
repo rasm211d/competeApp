@@ -10,41 +10,7 @@ class GameRepository implements IGameRepository {
 
   GameRepository(this._firestore);
 
-  // @override
-  // Future<Either<String, List<Game>>> getGames() async {
-  //   CollectionReference games = _firestore.collection('games');
-
-  //   QuerySnapshot snapshot = await games.get();
-  //   List<Game> gamesFromDb;
-
-  //   for (var game in snapshot.docs) {
-  //     print(game);
-  //   }
-  // }
-
   Stream<Either<String, List<Game>>> getGames() async* {
-    // try {
-    //   CollectionReference games = _firestore.collection('games');
-
-    //   QuerySnapshot snapshot = await games.get();
-    //   List<Game> gamesFromDb = [];
-
-    //   for (var game in snapshot.docs) {
-    //     Game listGame = Game(
-    //       player1Id: game['player1Id'],
-    //       player2Id: game['player2Id'],
-    //       player1Score: game['player1Score'],
-    //        player2Score: game['player2Score'],
-    //       player1Name: game['player1Name'],
-    //        player2Name: game['player2Name'],
-    //        gameName: game['gameName'],
-    // //     );
-    //     gamesFromDb.add(listGame);
-    //   }
-    //   return right(gamesFromDb);
-    // } on Exception catch (e) {
-    //   return left(e.toString());
-    // }
     CollectionReference games = _firestore.collection('games');
     yield* games.snapshots().map(
           (snapshot) => right(
@@ -64,5 +30,26 @@ class GameRepository implements IGameRepository {
       player2Name: json['player2Name'],
       gameName: json['gameName'],
     );
+  }
+
+  @override
+  Future<Either<String, Unit>> createGame(Game game) async {
+    try {
+      CollectionReference games = _firestore.collection('games');
+      await games.add({
+        'gameName': game.gameName,
+        'player1Id': game.player1Id,
+        'player1Name': game.player1Name,
+        'player1Score': game.player1Score,
+        'player2Id': game.player2Id,
+        'player2Name': game.player2Name,
+        'player2Score': game.player2Score,
+      }).then(
+        (value) => print('Game added'),
+      );
+      return right(unit);
+    } on Exception catch (e) {
+      return left(e.toString());
+    }
   }
 }

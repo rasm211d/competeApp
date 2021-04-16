@@ -21,108 +21,150 @@ class _GamePageState extends State<GamePage> {
             child: CircularProgressIndicator(),
           ),
           loadSuccess: (state) {
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                final game = state.games[index];
-                return GestureDetector(
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    height: 150,
-                    width: double.maxFinite,
-                    child: Card(
-                      elevation: 5,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      if (state.games.length - 1 == index) {}
+                      final game = state.games[index];
+                      return Column(
                         children: [
-                          Flexible(
-                            flex: 2,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.add),
-                                  onPressed: () {
-                                    setState(() {
-                                      player1Score++;
-                                    });
-                                  },
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Text(game.gameName),
+                                      ));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                              height: 150,
+                              width: double.maxFinite,
+                              child: Card(
+                                elevation: 5,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      flex: 2,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(Icons.add),
+                                            onPressed: () {
+                                              setState(() {
+                                                player1Score++;
+                                              });
+                                            },
+                                          ),
+                                          IconButton(
+                                            icon: Icon(Icons.remove),
+                                            onPressed: () {
+                                              setState(() {
+                                                if (player1Score > 0) {
+                                                  player1Score--;
+                                                }
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Flexible(
+                                      fit: FlexFit.tight,
+                                      flex: 2,
+                                      child:
+                                          Center(child: Text(game.player1Name)),
+                                    ),
+                                    Flexible(
+                                      flex: 3,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                game.player1Score.toString(),
+                                                style: TextStyle(fontSize: 30),
+                                              ),
+                                              Text(
+                                                '-',
+                                                style: TextStyle(fontSize: 30),
+                                              ),
+                                              Text(
+                                                game.player2Score.toString(),
+                                                style: TextStyle(fontSize: 30),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            game.gameName,
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Flexible(
+                                      fit: FlexFit.tight,
+                                      flex: 2,
+                                      child:
+                                          Center(child: Text(game.player2Name)),
+                                    ),
+                                    Flexible(
+                                      flex: 2,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(Icons.add),
+                                            onPressed: () {
+                                              setState(() {
+                                                player2Score++;
+                                              });
+                                            },
+                                          ),
+                                          IconButton(
+                                            icon: Icon(Icons.remove),
+                                            onPressed: () {
+                                              setState(() {
+                                                if (player2Score > 0) {
+                                                  player2Score--;
+                                                }
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                IconButton(
-                                  icon: Icon(Icons.remove),
-                                  onPressed: () {
-                                    setState(() {
-                                      if (player1Score > 0) {
-                                        player1Score--;
-                                      }
-                                    });
-                                  },
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                          Flexible(
-                            fit: FlexFit.tight,
-                            flex: 2,
-                            child: Center(child: Text(game.player1Name)),
-                          ),
-                          Flexible(
-                            flex: 3,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  game.player1Score.toString(),
-                                  style: TextStyle(fontSize: 30),
-                                ),
-                                Text(
-                                  '-',
-                                  style: TextStyle(fontSize: 30),
-                                ),
-                                Text(
-                                  game.player2Score.toString(),
-                                  style: TextStyle(fontSize: 30),
-                                ),
-                              ],
+                          if (state.games.length - 1 == index)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Text('New game'),
+                              ),
                             ),
-                          ),
-                          Flexible(
-                            fit: FlexFit.tight,
-                            flex: 2,
-                            child: Center(child: Text(game.player2Name)),
-                          ),
-                          Flexible(
-                            flex: 2,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.add),
-                                  onPressed: () {
-                                    setState(() {
-                                      player2Score++;
-                                    });
-                                  },
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.remove),
-                                  onPressed: () {
-                                    setState(() {
-                                      if (player2Score > 0) {
-                                        player2Score--;
-                                      }
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
-                      ),
-                    ),
+                      );
+                    },
+                    itemCount: state.games.length,
                   ),
-                );
-              },
-              itemCount: state.games.length,
+                ),
+              ],
             );
           },
           loadFailure: (state) {
