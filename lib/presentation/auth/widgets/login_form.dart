@@ -1,5 +1,7 @@
 import 'package:compete/application/sign_in/sign_in_bloc.dart';
 import 'package:compete/domain/core/validators.dart';
+import 'package:compete/domain/game/i_game_repository.dart';
+import 'package:compete/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -97,8 +99,9 @@ class _LoginFormState extends State<LoginForm> {
                           letterSpacing: 1,
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          await getIt<IGameRepository>().getGames();
                           context.read<SignInBloc>()
                             ..add(SignInEvent
                                 .signInWithEmailAndPasswordPressed());

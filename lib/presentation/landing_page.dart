@@ -1,6 +1,10 @@
+import 'package:compete/application/game/game_bloc.dart';
+import 'package:compete/injection.dart';
+import 'package:compete/presentation/game/game_page.dart';
 import 'package:compete/presentation/profile/profile_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -13,9 +17,9 @@ class _LandingPageState extends State<LandingPage> {
     Placeholder(
       color: Colors.green,
     ),
-    Placeholder(
-      color: Colors.blue,
-    ),
+    BlocProvider(
+        create: (context) => getIt<GameBloc>()..add(GameEvent.watchAll()),
+        child: GamePage()),
     ProfilePage(),
   ];
 
