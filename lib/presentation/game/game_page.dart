@@ -26,7 +26,7 @@ class _GamePageState extends State<GamePage> {
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
-                      if (state.games.length - 1 == index) {}
+                      //if (state.games.length - 1 == index) {}
                       final game = state.games[index];
                       return Column(
                         children: [

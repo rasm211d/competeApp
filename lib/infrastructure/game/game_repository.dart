@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:compete/domain/auth/i_auth_facade.dart';
 import 'package:compete/domain/game/game.dart';
 import 'package:compete/domain/game/i_game_repository.dart';
+import 'package:compete/injection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,10 +10,16 @@ import 'package:injectable/injectable.dart';
 class GameRepository implements IGameRepository {
   final FirebaseFirestore _firestore;
 
-  GameRepository(this._firestore);
+  GameRepository(
+    this._firestore,
+  );
 
   Stream<Either<String, List<Game>>> getGames() async* {
-    CollectionReference games = _firestore.collection('games');
+    Query games = _firestore.collection('games').where('playerArray',
+        arrayContains: getIt<IAuthFacade>()
+            .getSignedInUser()
+            .fold(() => 'nouser@mail.dk', (user) => user.email));
+
     yield* games.snapshots().map(
           (snapshot) => right(
             snapshot.docs.map((e) => _mapDocument(e)).toList(),
@@ -44,6 +52,7 @@ class GameRepository implements IGameRepository {
         'player2Id': game.player2Id,
         'player2Name': game.player2Name,
         'player2Score': game.player2Score,
+        'playerArray': [game.player1Id, game.player2Id],
       }).then(
         (value) => print('Game added'),
       );

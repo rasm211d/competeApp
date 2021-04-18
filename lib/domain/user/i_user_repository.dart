@@ -6,4 +6,5 @@ import 'user.dart';
 abstract class IUserRepository {
   Future<Either<String, Unit>> createUser(AppUser user);
   Future<Either<String, Unit>> deleteUser(AppUser user);
+  Future<Either<String, Unit>> getUser(AppUser user);
 }

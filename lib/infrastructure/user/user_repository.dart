@@ -31,4 +31,10 @@ class UserRepository implements IUserRepository {
     // TODO: implement delete
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<String, Unit>> getUser(AppUser user) {
+    // TODO: implement getUser
+    throw UnimplementedError();
+  }
 }
