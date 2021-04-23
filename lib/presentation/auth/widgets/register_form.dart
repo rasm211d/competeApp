@@ -245,8 +245,8 @@ class CustomTextFormField extends StatelessWidget {
           }
           return null;
         } else if (isUsername) {
-          if (value.toString().length <= 6) {
-            return 'Username must be longer than 6 characters';
+          if (value.toString().length <= 5 || value.toString().length >= 12) {
+            return 'Username must be between 6 and 12 characters';
           }
         }
       },

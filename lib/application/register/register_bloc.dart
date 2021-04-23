@@ -56,7 +56,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         );
       },
       createUser: (e) async* {
+        final userId =
+            _authFacade.getSignedInUser().fold(() => null, (a) => a.uid);
         final either = await _userRepository.createUser(
+          userId!,
           AppUser(
             username: state.username,
             emailAddress: state.emailAddress,

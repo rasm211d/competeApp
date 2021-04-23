@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'user.dart';
 
 abstract class IUserRepository {
-  Future<Either<String, Unit>> createUser(AppUser user);
-  Future<Either<String, Unit>> deleteUser(AppUser user);
-  Future<Either<String, Unit>> getUser(AppUser user);
+  Future<Either<String, Unit>> createUser(String uID, AppUser user);
+  Future<Either<String, Unit>> deleteUser(String uID, AppUser user);
+  Future<Either<String, Unit>> getUser(String uID);
 }

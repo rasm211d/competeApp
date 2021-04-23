@@ -1,5 +1,6 @@
 import 'package:compete/application/game/game_bloc.dart';
 import 'package:compete/injection.dart';
+import 'package:compete/presentation/game/game_form_page.dart';
 import 'package:compete/presentation/game/game_page.dart';
 import 'package:compete/presentation/profile/profile_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -14,12 +15,10 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Placeholder(
-      color: Colors.green,
-    ),
     BlocProvider(
         create: (context) => getIt<GameBloc>()..add(GameEvent.watchAll()),
         child: GamePage()),
+    GameFormPage(),
     ProfilePage(),
   ];
 

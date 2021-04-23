@@ -11,12 +11,13 @@ class UserRepository implements IUserRepository {
   UserRepository(this._firestore);
 
   @override
-  Future<Either<String, Unit>> createUser(AppUser user) async {
+  Future<Either<String, Unit>> createUser(String uID, AppUser user) async {
     try {
       CollectionReference users = _firestore.collection('users');
 
       await users
-          .add({'username': user.username, 'email': user.emailAddress}).then(
+          .doc(uID)
+          .set({'username': user.username, 'email': user.emailAddress}).then(
               (value) => print('User Added'));
       return right(unit);
     } on Exception catch (e) {
@@ -27,13 +28,13 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<Either<String, Unit>> deleteUser(AppUser user) async {
-    // TODO: implement delete
+  Future<Either<String, Unit>> deleteUser(String uID, AppUser user) {
+    // TODO: implement deleteUser
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<String, Unit>> getUser(AppUser user) {
+  Future<Either<String, Unit>> getUser(String uID) {
     // TODO: implement getUser
     throw UnimplementedError();
   }

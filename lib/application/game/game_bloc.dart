@@ -36,6 +36,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (f) => GameState.loadFailure(f),
         (r) => GameState.loadSuccess(r),
       );
-    });
+    },);
   }
 }
