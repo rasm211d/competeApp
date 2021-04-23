@@ -17,7 +17,8 @@ class _$GameTearOff {
   const _$GameTearOff();
 
   _Game call(
-      {required String player1Id,
+      {required String id,
+      required String player1Id,
       required String player2Id,
       required int player1Score,
       required int player2Score,
@@ -25,6 +26,7 @@ class _$GameTearOff {
       required String player2Name,
       required String gameName}) {
     return _Game(
+      id: id,
       player1Id: player1Id,
       player2Id: player2Id,
       player1Score: player1Score,
@@ -41,6 +43,7 @@ const $Game = _$GameTearOff();
 
 /// @nodoc
 mixin _$Game {
+  String get id => throw _privateConstructorUsedError;
   String get player1Id => throw _privateConstructorUsedError;
   String get player2Id => throw _privateConstructorUsedError;
   int get player1Score => throw _privateConstructorUsedError;
@@ -58,7 +61,8 @@ abstract class $GameCopyWith<$Res> {
   factory $GameCopyWith(Game value, $Res Function(Game) then) =
       _$GameCopyWithImpl<$Res>;
   $Res call(
-      {String player1Id,
+      {String id,
+      String player1Id,
       String player2Id,
       int player1Score,
       int player2Score,
@@ -77,6 +81,7 @@ class _$GameCopyWithImpl<$Res> implements $GameCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? player1Id = freezed,
     Object? player2Id = freezed,
     Object? player1Score = freezed,
@@ -86,6 +91,10 @@ class _$GameCopyWithImpl<$Res> implements $GameCopyWith<$Res> {
     Object? gameName = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       player1Id: player1Id == freezed
           ? _value.player1Id
           : player1Id // ignore: cast_nullable_to_non_nullable
@@ -124,7 +133,8 @@ abstract class _$GameCopyWith<$Res> implements $GameCopyWith<$Res> {
       __$GameCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String player1Id,
+      {String id,
+      String player1Id,
       String player2Id,
       int player1Score,
       int player2Score,
@@ -144,6 +154,7 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? player1Id = freezed,
     Object? player2Id = freezed,
     Object? player1Score = freezed,
@@ -153,6 +164,10 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
     Object? gameName = freezed,
   }) {
     return _then(_Game(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       player1Id: player1Id == freezed
           ? _value.player1Id
           : player1Id // ignore: cast_nullable_to_non_nullable
@@ -188,7 +203,8 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
 /// @nodoc
 class _$_Game extends _Game {
   const _$_Game(
-      {required this.player1Id,
+      {required this.id,
+      required this.player1Id,
       required this.player2Id,
       required this.player1Score,
       required this.player2Score,
@@ -197,6 +213,8 @@ class _$_Game extends _Game {
       required this.gameName})
       : super._();
 
+  @override
+  final String id;
   @override
   final String player1Id;
   @override
@@ -214,13 +232,15 @@ class _$_Game extends _Game {
 
   @override
   String toString() {
-    return 'Game(player1Id: $player1Id, player2Id: $player2Id, player1Score: $player1Score, player2Score: $player2Score, player1Name: $player1Name, player2Name: $player2Name, gameName: $gameName)';
+    return 'Game(id: $id, player1Id: $player1Id, player2Id: $player2Id, player1Score: $player1Score, player2Score: $player2Score, player1Name: $player1Name, player2Name: $player2Name, gameName: $gameName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Game &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.player1Id, player1Id) ||
                 const DeepCollectionEquality()
                     .equals(other.player1Id, player1Id)) &&
@@ -247,6 +267,7 @@ class _$_Game extends _Game {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(player1Id) ^
       const DeepCollectionEquality().hash(player2Id) ^
       const DeepCollectionEquality().hash(player1Score) ^
@@ -263,7 +284,8 @@ class _$_Game extends _Game {
 
 abstract class _Game extends Game {
   const factory _Game(
-      {required String player1Id,
+      {required String id,
+      required String player1Id,
       required String player2Id,
       required int player1Score,
       required int player2Score,
@@ -272,6 +294,8 @@ abstract class _Game extends Game {
       required String gameName}) = _$_Game;
   const _Game._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get player1Id => throw _privateConstructorUsedError;
   @override

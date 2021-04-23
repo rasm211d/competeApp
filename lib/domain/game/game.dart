@@ -8,6 +8,7 @@ abstract class Game implements _$Game {
   const Game._();
 
   const factory Game({
+    required String id,
     required String player1Id,
     required String player2Id,
     required int player1Score,

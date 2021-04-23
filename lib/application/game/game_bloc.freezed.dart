@@ -25,6 +25,36 @@ class _$GameEventTearOff {
       failureOrGames,
     );
   }
+
+  _PlayerOneIncrement playerOneIncrement(Game game) {
+    return _PlayerOneIncrement(
+      game,
+    );
+  }
+
+  _PlayerOneDecrement playerOneDecrement(Game game) {
+    return _PlayerOneDecrement(
+      game,
+    );
+  }
+
+  _PlayerTwoIncrement playerTwoIncrement(Game game) {
+    return _PlayerTwoIncrement(
+      game,
+    );
+  }
+
+  _PlayerTwoDecrement playerTwoDecrement(Game game) {
+    return _PlayerTwoDecrement(
+      game,
+    );
+  }
+
+  _DeleteGame delete(Game game) {
+    return _DeleteGame(
+      game,
+    );
+  }
 }
 
 /// @nodoc
@@ -37,12 +67,22 @@ mixin _$GameEvent {
     required TResult Function() watchAll,
     required TResult Function(Either<String, List<Game>> failureOrGames)
         gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAll,
     TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,12 +90,22 @@ mixin _$GameEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +171,11 @@ class _$_WatchAll with DiagnosticableTreeMixin implements _WatchAll {
     required TResult Function() watchAll,
     required TResult Function(Either<String, List<Game>> failureOrGames)
         gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
   }) {
     return watchAll();
   }
@@ -130,6 +185,11 @@ class _$_WatchAll with DiagnosticableTreeMixin implements _WatchAll {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAll,
     TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
     required TResult orElse(),
   }) {
     if (watchAll != null) {
@@ -143,6 +203,11 @@ class _$_WatchAll with DiagnosticableTreeMixin implements _WatchAll {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
   }) {
     return watchAll(this);
   }
@@ -152,6 +217,11 @@ class _$_WatchAll with DiagnosticableTreeMixin implements _WatchAll {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
     required TResult orElse(),
   }) {
     if (watchAll != null) {
@@ -241,6 +311,11 @@ class _$_GamesRecieved with DiagnosticableTreeMixin implements _GamesRecieved {
     required TResult Function() watchAll,
     required TResult Function(Either<String, List<Game>> failureOrGames)
         gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
   }) {
     return gamesRecieved(failureOrGames);
   }
@@ -250,6 +325,11 @@ class _$_GamesRecieved with DiagnosticableTreeMixin implements _GamesRecieved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAll,
     TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
     required TResult orElse(),
   }) {
     if (gamesRecieved != null) {
@@ -263,6 +343,11 @@ class _$_GamesRecieved with DiagnosticableTreeMixin implements _GamesRecieved {
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAll value) watchAll,
     required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
   }) {
     return gamesRecieved(this);
   }
@@ -272,6 +357,11 @@ class _$_GamesRecieved with DiagnosticableTreeMixin implements _GamesRecieved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAll value)? watchAll,
     TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
     required TResult orElse(),
   }) {
     if (gamesRecieved != null) {
@@ -289,6 +379,778 @@ abstract class _GamesRecieved implements GameEvent {
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GamesRecievedCopyWith<_GamesRecieved> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PlayerOneIncrementCopyWith<$Res> {
+  factory _$PlayerOneIncrementCopyWith(
+          _PlayerOneIncrement value, $Res Function(_PlayerOneIncrement) then) =
+      __$PlayerOneIncrementCopyWithImpl<$Res>;
+  $Res call({Game game});
+
+  $GameCopyWith<$Res> get game;
+}
+
+/// @nodoc
+class __$PlayerOneIncrementCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res>
+    implements _$PlayerOneIncrementCopyWith<$Res> {
+  __$PlayerOneIncrementCopyWithImpl(
+      _PlayerOneIncrement _value, $Res Function(_PlayerOneIncrement) _then)
+      : super(_value, (v) => _then(v as _PlayerOneIncrement));
+
+  @override
+  _PlayerOneIncrement get _value => super._value as _PlayerOneIncrement;
+
+  @override
+  $Res call({
+    Object? game = freezed,
+  }) {
+    return _then(_PlayerOneIncrement(
+      game == freezed
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game,
+    ));
+  }
+
+  @override
+  $GameCopyWith<$Res> get game {
+    return $GameCopyWith<$Res>(_value.game, (value) {
+      return _then(_value.copyWith(game: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_PlayerOneIncrement
+    with DiagnosticableTreeMixin
+    implements _PlayerOneIncrement {
+  const _$_PlayerOneIncrement(this.game);
+
+  @override
+  final Game game;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GameEvent.playerOneIncrement(game: $game)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GameEvent.playerOneIncrement'))
+      ..add(DiagnosticsProperty('game', game));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PlayerOneIncrement &&
+            (identical(other.game, game) ||
+                const DeepCollectionEquality().equals(other.game, game)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(game);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PlayerOneIncrementCopyWith<_PlayerOneIncrement> get copyWith =>
+      __$PlayerOneIncrementCopyWithImpl<_PlayerOneIncrement>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAll,
+    required TResult Function(Either<String, List<Game>> failureOrGames)
+        gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
+  }) {
+    return playerOneIncrement(game);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAll,
+    TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerOneIncrement != null) {
+      return playerOneIncrement(game);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
+  }) {
+    return playerOneIncrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerOneIncrement != null) {
+      return playerOneIncrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerOneIncrement implements GameEvent {
+  const factory _PlayerOneIncrement(Game game) = _$_PlayerOneIncrement;
+
+  Game get game => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PlayerOneIncrementCopyWith<_PlayerOneIncrement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PlayerOneDecrementCopyWith<$Res> {
+  factory _$PlayerOneDecrementCopyWith(
+          _PlayerOneDecrement value, $Res Function(_PlayerOneDecrement) then) =
+      __$PlayerOneDecrementCopyWithImpl<$Res>;
+  $Res call({Game game});
+
+  $GameCopyWith<$Res> get game;
+}
+
+/// @nodoc
+class __$PlayerOneDecrementCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res>
+    implements _$PlayerOneDecrementCopyWith<$Res> {
+  __$PlayerOneDecrementCopyWithImpl(
+      _PlayerOneDecrement _value, $Res Function(_PlayerOneDecrement) _then)
+      : super(_value, (v) => _then(v as _PlayerOneDecrement));
+
+  @override
+  _PlayerOneDecrement get _value => super._value as _PlayerOneDecrement;
+
+  @override
+  $Res call({
+    Object? game = freezed,
+  }) {
+    return _then(_PlayerOneDecrement(
+      game == freezed
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game,
+    ));
+  }
+
+  @override
+  $GameCopyWith<$Res> get game {
+    return $GameCopyWith<$Res>(_value.game, (value) {
+      return _then(_value.copyWith(game: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_PlayerOneDecrement
+    with DiagnosticableTreeMixin
+    implements _PlayerOneDecrement {
+  const _$_PlayerOneDecrement(this.game);
+
+  @override
+  final Game game;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GameEvent.playerOneDecrement(game: $game)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GameEvent.playerOneDecrement'))
+      ..add(DiagnosticsProperty('game', game));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PlayerOneDecrement &&
+            (identical(other.game, game) ||
+                const DeepCollectionEquality().equals(other.game, game)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(game);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PlayerOneDecrementCopyWith<_PlayerOneDecrement> get copyWith =>
+      __$PlayerOneDecrementCopyWithImpl<_PlayerOneDecrement>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAll,
+    required TResult Function(Either<String, List<Game>> failureOrGames)
+        gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
+  }) {
+    return playerOneDecrement(game);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAll,
+    TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerOneDecrement != null) {
+      return playerOneDecrement(game);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
+  }) {
+    return playerOneDecrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerOneDecrement != null) {
+      return playerOneDecrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerOneDecrement implements GameEvent {
+  const factory _PlayerOneDecrement(Game game) = _$_PlayerOneDecrement;
+
+  Game get game => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PlayerOneDecrementCopyWith<_PlayerOneDecrement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PlayerTwoIncrementCopyWith<$Res> {
+  factory _$PlayerTwoIncrementCopyWith(
+          _PlayerTwoIncrement value, $Res Function(_PlayerTwoIncrement) then) =
+      __$PlayerTwoIncrementCopyWithImpl<$Res>;
+  $Res call({Game game});
+
+  $GameCopyWith<$Res> get game;
+}
+
+/// @nodoc
+class __$PlayerTwoIncrementCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res>
+    implements _$PlayerTwoIncrementCopyWith<$Res> {
+  __$PlayerTwoIncrementCopyWithImpl(
+      _PlayerTwoIncrement _value, $Res Function(_PlayerTwoIncrement) _then)
+      : super(_value, (v) => _then(v as _PlayerTwoIncrement));
+
+  @override
+  _PlayerTwoIncrement get _value => super._value as _PlayerTwoIncrement;
+
+  @override
+  $Res call({
+    Object? game = freezed,
+  }) {
+    return _then(_PlayerTwoIncrement(
+      game == freezed
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game,
+    ));
+  }
+
+  @override
+  $GameCopyWith<$Res> get game {
+    return $GameCopyWith<$Res>(_value.game, (value) {
+      return _then(_value.copyWith(game: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_PlayerTwoIncrement
+    with DiagnosticableTreeMixin
+    implements _PlayerTwoIncrement {
+  const _$_PlayerTwoIncrement(this.game);
+
+  @override
+  final Game game;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GameEvent.playerTwoIncrement(game: $game)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GameEvent.playerTwoIncrement'))
+      ..add(DiagnosticsProperty('game', game));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PlayerTwoIncrement &&
+            (identical(other.game, game) ||
+                const DeepCollectionEquality().equals(other.game, game)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(game);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PlayerTwoIncrementCopyWith<_PlayerTwoIncrement> get copyWith =>
+      __$PlayerTwoIncrementCopyWithImpl<_PlayerTwoIncrement>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAll,
+    required TResult Function(Either<String, List<Game>> failureOrGames)
+        gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
+  }) {
+    return playerTwoIncrement(game);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAll,
+    TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerTwoIncrement != null) {
+      return playerTwoIncrement(game);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
+  }) {
+    return playerTwoIncrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerTwoIncrement != null) {
+      return playerTwoIncrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerTwoIncrement implements GameEvent {
+  const factory _PlayerTwoIncrement(Game game) = _$_PlayerTwoIncrement;
+
+  Game get game => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PlayerTwoIncrementCopyWith<_PlayerTwoIncrement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PlayerTwoDecrementCopyWith<$Res> {
+  factory _$PlayerTwoDecrementCopyWith(
+          _PlayerTwoDecrement value, $Res Function(_PlayerTwoDecrement) then) =
+      __$PlayerTwoDecrementCopyWithImpl<$Res>;
+  $Res call({Game game});
+
+  $GameCopyWith<$Res> get game;
+}
+
+/// @nodoc
+class __$PlayerTwoDecrementCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res>
+    implements _$PlayerTwoDecrementCopyWith<$Res> {
+  __$PlayerTwoDecrementCopyWithImpl(
+      _PlayerTwoDecrement _value, $Res Function(_PlayerTwoDecrement) _then)
+      : super(_value, (v) => _then(v as _PlayerTwoDecrement));
+
+  @override
+  _PlayerTwoDecrement get _value => super._value as _PlayerTwoDecrement;
+
+  @override
+  $Res call({
+    Object? game = freezed,
+  }) {
+    return _then(_PlayerTwoDecrement(
+      game == freezed
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game,
+    ));
+  }
+
+  @override
+  $GameCopyWith<$Res> get game {
+    return $GameCopyWith<$Res>(_value.game, (value) {
+      return _then(_value.copyWith(game: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_PlayerTwoDecrement
+    with DiagnosticableTreeMixin
+    implements _PlayerTwoDecrement {
+  const _$_PlayerTwoDecrement(this.game);
+
+  @override
+  final Game game;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GameEvent.playerTwoDecrement(game: $game)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GameEvent.playerTwoDecrement'))
+      ..add(DiagnosticsProperty('game', game));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PlayerTwoDecrement &&
+            (identical(other.game, game) ||
+                const DeepCollectionEquality().equals(other.game, game)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(game);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PlayerTwoDecrementCopyWith<_PlayerTwoDecrement> get copyWith =>
+      __$PlayerTwoDecrementCopyWithImpl<_PlayerTwoDecrement>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAll,
+    required TResult Function(Either<String, List<Game>> failureOrGames)
+        gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
+  }) {
+    return playerTwoDecrement(game);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAll,
+    TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerTwoDecrement != null) {
+      return playerTwoDecrement(game);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
+  }) {
+    return playerTwoDecrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
+    required TResult orElse(),
+  }) {
+    if (playerTwoDecrement != null) {
+      return playerTwoDecrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlayerTwoDecrement implements GameEvent {
+  const factory _PlayerTwoDecrement(Game game) = _$_PlayerTwoDecrement;
+
+  Game get game => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PlayerTwoDecrementCopyWith<_PlayerTwoDecrement> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeleteGameCopyWith<$Res> {
+  factory _$DeleteGameCopyWith(
+          _DeleteGame value, $Res Function(_DeleteGame) then) =
+      __$DeleteGameCopyWithImpl<$Res>;
+  $Res call({Game game});
+
+  $GameCopyWith<$Res> get game;
+}
+
+/// @nodoc
+class __$DeleteGameCopyWithImpl<$Res> extends _$GameEventCopyWithImpl<$Res>
+    implements _$DeleteGameCopyWith<$Res> {
+  __$DeleteGameCopyWithImpl(
+      _DeleteGame _value, $Res Function(_DeleteGame) _then)
+      : super(_value, (v) => _then(v as _DeleteGame));
+
+  @override
+  _DeleteGame get _value => super._value as _DeleteGame;
+
+  @override
+  $Res call({
+    Object? game = freezed,
+  }) {
+    return _then(_DeleteGame(
+      game == freezed
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game,
+    ));
+  }
+
+  @override
+  $GameCopyWith<$Res> get game {
+    return $GameCopyWith<$Res>(_value.game, (value) {
+      return _then(_value.copyWith(game: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_DeleteGame with DiagnosticableTreeMixin implements _DeleteGame {
+  const _$_DeleteGame(this.game);
+
+  @override
+  final Game game;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GameEvent.delete(game: $game)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GameEvent.delete'))
+      ..add(DiagnosticsProperty('game', game));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteGame &&
+            (identical(other.game, game) ||
+                const DeepCollectionEquality().equals(other.game, game)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(game);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteGameCopyWith<_DeleteGame> get copyWith =>
+      __$DeleteGameCopyWithImpl<_DeleteGame>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAll,
+    required TResult Function(Either<String, List<Game>> failureOrGames)
+        gamesRecieved,
+    required TResult Function(Game game) playerOneIncrement,
+    required TResult Function(Game game) playerOneDecrement,
+    required TResult Function(Game game) playerTwoIncrement,
+    required TResult Function(Game game) playerTwoDecrement,
+    required TResult Function(Game game) delete,
+  }) {
+    return delete(game);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAll,
+    TResult Function(Either<String, List<Game>> failureOrGames)? gamesRecieved,
+    TResult Function(Game game)? playerOneIncrement,
+    TResult Function(Game game)? playerOneDecrement,
+    TResult Function(Game game)? playerTwoIncrement,
+    TResult Function(Game game)? playerTwoDecrement,
+    TResult Function(Game game)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(game);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAll value) watchAll,
+    required TResult Function(_GamesRecieved value) gamesRecieved,
+    required TResult Function(_PlayerOneIncrement value) playerOneIncrement,
+    required TResult Function(_PlayerOneDecrement value) playerOneDecrement,
+    required TResult Function(_PlayerTwoIncrement value) playerTwoIncrement,
+    required TResult Function(_PlayerTwoDecrement value) playerTwoDecrement,
+    required TResult Function(_DeleteGame value) delete,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAll value)? watchAll,
+    TResult Function(_GamesRecieved value)? gamesRecieved,
+    TResult Function(_PlayerOneIncrement value)? playerOneIncrement,
+    TResult Function(_PlayerOneDecrement value)? playerOneDecrement,
+    TResult Function(_PlayerTwoIncrement value)? playerTwoIncrement,
+    TResult Function(_PlayerTwoDecrement value)? playerTwoDecrement,
+    TResult Function(_DeleteGame value)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteGame implements GameEvent {
+  const factory _DeleteGame(Game game) = _$_DeleteGame;
+
+  Game get game => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteGameCopyWith<_DeleteGame> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

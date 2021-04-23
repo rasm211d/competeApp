@@ -48,8 +48,33 @@ class _GamePageState extends State<GamePage> {
                               onTap: () {
                                 showDialog(
                                     context: context,
-                                    builder: (context) => AlertDialog(
+                                    builder: (c) => AlertDialog(
                                           title: Text(game.gameName),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(c);
+                                              },
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(
+                                                    color: Colors
+                                                        .orangeAccent.shade100),
+                                              ),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                context.read<GameBloc>().add(
+                                                    GameEvent.delete(game));
+                                                Navigator.pop(c);
+                                              },
+                                              child: Text(
+                                                'Delete',
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                            )
+                                          ],
                                         ));
                               },
                               child: Container(
@@ -73,9 +98,11 @@ class _GamePageState extends State<GamePage> {
                                             IconButton(
                                               icon: Icon(Icons.add),
                                               onPressed: () {
-                                                setState(() {
-                                                  player1Score++;
-                                                });
+                                                context.read<GameBloc>().add(
+                                                      GameEvent
+                                                          .playerOneIncrement(
+                                                              game),
+                                                    );
                                               },
                                             ),
                                             Padding(
@@ -87,11 +114,11 @@ class _GamePageState extends State<GamePage> {
                                             IconButton(
                                               icon: Icon(Icons.remove),
                                               onPressed: () {
-                                                setState(() {
-                                                  if (player1Score > 0) {
-                                                    player1Score--;
-                                                  }
-                                                });
+                                                context.read<GameBloc>().add(
+                                                      GameEvent
+                                                          .playerOneDecrement(
+                                                              game),
+                                                    );
                                               },
                                             ),
                                           ],
@@ -155,9 +182,11 @@ class _GamePageState extends State<GamePage> {
                                             IconButton(
                                               icon: Icon(Icons.add),
                                               onPressed: () {
-                                                setState(() {
-                                                  player2Score++;
-                                                });
+                                                context.read<GameBloc>().add(
+                                                      GameEvent
+                                                          .playerTwoIncrement(
+                                                              game),
+                                                    );
                                               },
                                             ),
                                             Padding(
@@ -169,11 +198,12 @@ class _GamePageState extends State<GamePage> {
                                             IconButton(
                                               icon: Icon(Icons.remove),
                                               onPressed: () {
-                                                setState(() {
-                                                  if (player2Score > 0) {
-                                                    player2Score--;
-                                                  }
-                                                });
+                                                context.read<GameBloc>().add(
+                                                      GameEvent
+                                                          .playerTwoDecrement(
+                                                              game),
+                                                    );
+                                                ;
                                               },
                                             ),
                                           ],

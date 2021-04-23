@@ -36,6 +36,20 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         (f) => GameState.loadFailure(f),
         (r) => GameState.loadSuccess(r),
       );
-    },);
+    }, playerOneIncrement: (e) async* {
+      await _gameRepository
+          .updateGame(e.game.copyWith(player1Score: e.game.player1Score + 1));
+    }, playerOneDecrement: (e) async* {
+      await _gameRepository
+          .updateGame(e.game.copyWith(player1Score: e.game.player1Score - 1));
+    }, playerTwoIncrement: (e) async* {
+      await _gameRepository
+          .updateGame(e.game.copyWith(player2Score: e.game.player2Score + 1));
+    }, playerTwoDecrement: (e) async* {
+      await _gameRepository
+          .updateGame(e.game.copyWith(player2Score: e.game.player2Score - 1));
+    }, delete: (e) async* {
+      await _gameRepository.deleteGame(e.game);
+    });
   }
 }
